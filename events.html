@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyA-FdYPgCKQC-n-WdQK1BZVCSYxMa73M9U"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <title>A Basic HTML5 Template</title>
+</head>
+
+  <body>
+    <div class="container row ">
+      <h1>Create event</h1>
+      <h3>Organizer details</h3>
+      <hr/>
+    <form class="form" name="myform" method="POST">
+      <div>
+        <label for="Name">Full Name</label>
+        <input type="text" class="form-control" name="Name" id="Name" placeholder="Firstname Lastname" required><br>
+        
+      </div>
+
+      <div>
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="email address" required>
+          
+      </div>
+        
+
+
+
+      <br>
+      <div>
+        <label for="Password">Password</label>
+        <input type="password" name="Password" class="form-control" id="Password" required><br>
+        
+      </div>
+
+      <div>
+          <label for="cPassword">Confirm Password</label>
+          <input type="cpassword" name="cPassword" class="form-control" id="cPassword" required><br>
+          
+        </div>
+  
+      <h3>Event Details</h3>
+      
+      <hr/>
+      <div>
+          <label for="ename">Event name</label>
+          <input type="text" name="ename" class="form-control" id="ename" required><br>
+          
+        </div>
+  
+        <div>
+            <label for="ename">Contact details</label>
+            <input type="tel" name="econtact" class="form-control" id="econtact" required><br>
+            
+          </div>
+          
+          <div>
+              <label for="eaddr">Location Address</label><br>
+              <!---<input type="text" name="eaddr" class="form-control" id="eaddr"><br>-->
+              <label><input type="radio" name="eaddr" id="external" checked onchange="add_details(1)"> External&nbsp;&nbsp;&nbsp;&nbsp;</label>
+              <label><input type="radio" name="eaddr" id="virtual" onchange="add_details(2)"> Virtual/Remote &nbsp;&nbsp;&nbsp;&nbsp;</label>
+              <label><input type="radio" name="eaddr" id="home" onchange="add_details(3)"> Current location &nbsp;&nbsp;&nbsp;&nbsp;</label>
+              
+              
+              
+              <input type="text" class="form-control" style="display:None" id="addr_opt1" placeholder="Please enter the location address">
+              <input type="url" id="addr_opt2" class="form-control" placeholder="Please enter the meeting link here" style="display:None" pattern="https://.*" size="30">
+              
+              <p style="display:None" id="addr_opt3_para"></p>
+          </div>
+
+            <div>
+                <label for="edate">Date</label>
+                <input type="date" name="edate" class="form-control" id="edate"><br>
+                
+              </div>
+              
+              <div>
+                  <label for="etime">Time</label>
+                  <input type="time" name="etime" class="form-control" id="etime"><br>
+                  
+                </div>
+      
+            <div id="additional_info">
+                <h3>Death details</h3>
+                <hr/>
+
+                <div>
+                        <label for="death_name">Deceased Name</label>
+                        <input type="text" name="death_name" class="form-control" id="death_name" required><br>
+                        
+                </div>
+
+
+                <div>
+                        <label for="death_reason">Death Reason</label>
+                        <input type="text" name="death_reason" class="form-control" id="death_reason"><br>
+                        
+                </div>
+
+                <div>
+                        <label for="death_place">Death Place</label>
+                        <input type="text" name="death_place" class="form-control" id="death_place"><br>
+                        
+                </div>
+
+                <div>
+                        <label for="death_date">Deceased Name</label>
+                        <input type="date" name="death_date" class="form-control" id="death_date" required><br>
+                        
+                </div>
+
+
+
+            </div>
+      
+      <button class="btn btn-lg btn-primary">Submit</button>
+          
+        
+      </form>
+    </div>  
+  </body>
+  <script src="index.js"></script>
+  
+
+
+
+
+  <!-- your content here... -->
+  
+</html>
