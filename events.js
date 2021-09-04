@@ -148,9 +148,18 @@ function add_event_details(x){
     }
 
 }
-const show_events=async (url="http://localhost:4444/getEvents")=>{
+const show_events_list=async (url="http://localhost:4444/getEvents")=>{
     let events_arr_response=await axios(url)
-    console.log(events_arr_response.data.event_arr)
+    const event_array_str=events_arr_response.data.event_arr
+    const events_list_div=document.querySelector("#display_events")
+    
+    
+    for(var i = 0; i < event_array_str.length; i++){ 
+        let props_list=Object.getOwnPropertyNames(event_array_str[i])
+        
+         
+        
+    }
     
 }
 function select_event(x){
@@ -166,8 +175,8 @@ function select_event(x){
         //case 2 will be to browse events
         case 2:
         document.querySelector("#events_menu").style.display="None"
-        show_events()
-        
+        document.querySelector("#eventform").style.display="None"
+        show_events_list()
         break;
         
 

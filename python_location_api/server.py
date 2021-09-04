@@ -5,6 +5,7 @@ import json
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/test', methods =['GET','POST'])
 def test():
@@ -40,7 +41,7 @@ def add_event():
     events_str=request.args.get("events_str")
     event_name=request.args.get("event_name")
     event_json=json.loads(events_str)
-    if write_json({event_name:event_json["event_name"]},"events.json"):
+    if write_json(event_json["event_name"],"events.json"):
         return {"status_code":200,"response_txt":"done"}
     else:
         return {"status_code":404,"response_txt":"Something went wrong"}
@@ -50,7 +51,9 @@ def get_events():
     
     with open("events.json",'r+') as file:
       fdata = json.load(file)
-      return {"event_arr":fdata,"status_code":200,"response_txt":"done"}
+      #result=[str(i) for i in fdata["events_data"]]
+      result=fdata["events_data"]
+      return {"event_arr":result,"status_code":200,"response_txt":"done"}
     
 
 
