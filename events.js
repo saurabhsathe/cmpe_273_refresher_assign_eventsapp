@@ -153,12 +153,19 @@ const show_events_list=async (url="http://localhost:4444/getEvents")=>{
     const event_array_str=events_arr_response.data.event_arr
     const events_list_div=document.querySelector("#display_events")
     
-    
+    let final_str
     for(var i = 0; i < event_array_str.length; i++){ 
+        let para_element = document.createElement("p")
+        
         let props_list=Object.getOwnPropertyNames(event_array_str[i])
-        
-         
-        
+        final_str=""
+        let temp_str
+        for (let j=0;j<props_list.length;j++ ){
+            final_str=final_str+`${props_list[j]}:${event_array_str[i][props_list[j]]}</br>`
+            
+        }
+        para_element.innerHTML=final_str 
+        events_list_div.appendChild(para_element)
     }
     
 }
@@ -170,12 +177,16 @@ function select_event(x){
         //first option would be to select the event creation menu
         case 1:
         document.querySelector("#events_menu").style.display="block"
+        document.querySelector("#display_events").style.display="None"
+        document.querySelector("#display_events").innerHTML=""
         break;
 
         //case 2 will be to browse events
         case 2:
         document.querySelector("#events_menu").style.display="None"
         document.querySelector("#eventform").style.display="None"
+        document.querySelector("#display_events").style.display="block"
+
         show_events_list()
         break;
         

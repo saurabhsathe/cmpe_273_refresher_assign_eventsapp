@@ -161,7 +161,6 @@ const add_event=async (url,events_str,event_name)=>{
 
 
 function eventadd_function() {
-    alert("The form was submitted");
     //organizer details
     const name=document.getElementById("Name").value
     const email=document.getElementById("email").value
@@ -196,13 +195,12 @@ function eventadd_function() {
     sessionStorage.clear()
     const today_date=get_today()
     const event_name=`funeral_event_of_${dname}_${today_date}`
-    const event_details={event_name:{oname:name,oemail:email,event_name:ename,event_contact:econtact,event_loc:eaddr,event_date:edate,event_time:etime,death_name:dname,death_reason:dreason}}
+    const event_details={event_name:{event_type:"funeral",oname:name,oemail:email,event_name:ename,event_contact:econtact,event_loc:eaddr,event_date:edate,event_time:etime,death_name:dname,death_reason:dreason}}
     const event_details_str=JSON.stringify(event_details)
     console.log(event_details)
     
     const res=add_event("http://127.0.0.1:4444/addEvent",event_details_str, event_name)
-    alert("received back without error")
-    alert(res)
+    
   
 
 
