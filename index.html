@@ -9,6 +9,7 @@
     <script src="events.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
+    <script src="events.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -25,12 +26,14 @@
       <li><label><input type="radio" name="menuoption" id="browse" onchange="select_event(2)">Browse Events &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
     </ul>
     <ul id="events_menu" style="display:none">
-        <li><label><input type="radio" name="eventoption" id="funeral" onchange="add_event(1)"> Funeral &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
-        <li><label><input type="radio" name="eventoption" id="marriage" onchange="add_event(2)">Marriage &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
+        <li><label><input type="radio" name="eventoption" id="funeral" onchange="add_event_details(1)"> Funeral &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
+        <li><label><input type="radio" name="eventoption" id="marriage" onchange="add_event_details(2)">Marriage &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
     </ul>
   
   
-    <form id="eventform" name="eventform" style="display:None" class="form">
+    <div id="eventform" style="display:None" class="container row">
+
+    </div>
 
 
     </form>
@@ -41,9 +44,11 @@
 
 </div>
 <script defer>
-
-
 select_event(1)
+
+
+
+
 </script>
 
 </body>
