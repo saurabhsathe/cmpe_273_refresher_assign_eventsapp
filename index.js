@@ -160,8 +160,10 @@ const add_event=async (url,events_str,event_name)=>{
 }
 
 
-function eventadd_function() {
+function eventadd_function(x) {
+    console.log("In the function")
     //organizer details
+    console.log(x)
     const name=document.getElementById("Name").value
     const email=document.getElementById("email").value
     
@@ -172,10 +174,6 @@ function eventadd_function() {
     const eloc_opt=sessionStorage.getItem("addr_choice");
     const edate=document.getElementById("edate").value
     const etime=document.getElementById("etime").value
-    
-    //dead person details
-    const dname=document.getElementById("death_name").value
-    const dreason=document.getElementById("death_reason").value
     let eaddr;
 
     switch(eloc_opt){
@@ -193,16 +191,33 @@ function eventadd_function() {
     }
     
     sessionStorage.clear()
-    const today_date=get_today()
-    const event_name=`funeral_event_of_${dname}_${today_date}`
-    const event_details={event_name:{event_type:"funeral",oname:name,oemail:email,event_name:ename,event_contact:econtact,event_loc:eaddr,event_date:edate,event_time:etime,death_name:dname,death_reason:dreason}}
-    const event_details_str=JSON.stringify(event_details)
-    console.log(event_details)
+
+    if (x=="1"){
     
+    //dead person details
+    const dname=document.getElementById("death_name").value
+    const dreason=document.getElementById("death_reason").value
+    
+    let today_date=get_today()
+    let event_name=`funeral_event_of_${dname}_${today_date}`
+    let event_details={event_name:{event_type:"funeral",organizer_name:name,organizer_email:email,event_name:ename,event_contact:econtact,event_loc:eaddr,event_date:edate,event_time:etime,death_person_name:dname,death_reason:dreason}}
+    let event_details_str=JSON.stringify(event_details)
     const res=add_event("http://127.0.0.1:4444/addEvent",event_details_str, event_name)
     
-  
-
+    }
+    else if(x=="2"){
+        const bname=document.getElementById("bname").value
+        const gname=document.getElementById("gname").value
+        const met_details=document.getElementById("met_details").value
+        let today_date=get_today()
+        let event_name=`marriage_event_of_${bname}_${gname}_${today_date}`
+        let event_details={event_name:{event_type:"marriage",organizer_name:name,organizer_email:email,event_name:ename,event_contact:econtact,event_loc:eaddr,event_date:edate,event_time:etime,bride_name:bname,groom_name:gname,met_details:met_details}}
+        let event_details_str=JSON.stringify(event_details)
+        console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+        const res=add_event("http://127.0.0.1:4444/addEvent",event_details_str, event_name)
+           
+    }
+    
 
 }
 

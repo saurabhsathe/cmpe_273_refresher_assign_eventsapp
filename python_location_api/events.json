@@ -1,15 +1,29 @@
 {
     "events_data": [
         {
-            "oname": "Saurabh Suryakant Sathe",
-            "oemail": "sathesaurabh97@gmail.com",
-            "event_name": "dsadsaas",
+            "event_type": "marriage",
+            "organizer_name": "Saurabh Suryakant Sathe",
+            "organizer_email": "sathesaurabh97@gmail.com",
+            "event_name": "Marriage of John Doe and Mary XYZ",
             "event_contact": "1231231231",
             "event_loc": "Highway Residency, B-9",
             "event_date": "2021-09-08",
-            "event_time": "22:45",
-            "death_name": "lllll",
-            "death_reason": "ppppp"
+            "event_time": "08:33",
+            "bride_name": "Carol",
+            "groom_name": "John",
+            "met_details": "In the church"
+        },
+        {
+            "event_type": "funeral",
+            "organizer_name": "Saurabh Suryakant Sathe",
+            "organizer_email": "sathesaurabh97@gmail.com",
+            "event_name": "Funeral of John Doe",
+            "event_contact": "1231231231",
+            "event_loc": "Highway Residency, B-9",
+            "event_date": "2021-09-21",
+            "event_time": "08:41",
+            "death_person_name": "John Doe",
+            "death_reason": "Heart Attack"
         }
     ]
 }

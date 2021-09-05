@@ -19,17 +19,16 @@
 
     
   </head>
-  <body>
-    <div class="container row">
-    <ul>
-      <li><label><input type="radio" name="menuoption" id="hostevent" onchange="select_event(1)" checked> Host an event &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
-      <li><label><input type="radio" name="menuoption" id="browse" onchange="select_event(2)">Browse Events &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
-    </ul>
-    <ul id="events_menu" style="display:none">
-        <li><label><input type="radio" name="eventoption" id="funeral" onchange="add_event_details(1)"> Funeral &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
-        <li><label><input type="radio" name="eventoption" id="marriage" onchange="add_event_details(2)">Marriage &nbsp;&nbsp;&nbsp;&nbsp;</label></li>
-    </ul>
-  
+  <body style="background-image:url('./static/img2.jpg');color:aliceblue">
+      <h1>
+      <div style="content-align:center" class="container">
+      <label><input type="radio" name="menuoption" id="hostevent" onchange="select_event(1)" checked> Host an event &nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <label><input type="radio" name="menuoption" id="browse" onchange="select_event(2)">Browse Events &nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <div id="events_menu" style="display:none">
+        <label><input type="radio" name="eventoption" id="funeral" onchange="add_event_details(1)"> Funeral &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <label><input type="radio" name="eventoption" id="marriage" onchange="add_event_details(2)">Marriage &nbsp;&nbsp;&nbsp;&nbsp;</label>
+    </div></h1>
+  </div>
   
     <div id="eventform" style="display:None" class="container row">
 
@@ -42,13 +41,9 @@
 
     </div>
 
-</div>
+
 <script defer>
 select_event(1)
-
-
-
-
 </script>
 
 </body>

@@ -101,47 +101,57 @@ var funeral=class funeral extends myevent{
 
 var marriage = class marriage extends myevent{
     constructor(){
-        super("marriage")
+        super("marriage",2)
     }
     generate_event_details=()=>{ 
-    return '<h2><b>Death details</b></h2>\
+    return '<h2><b>Bride Groom Details</b></h2>\
     <hr/>\
     <div>\
-        <label for="death_name">Deceased Name</label>\
-        <input type="text" name="death_name" class="form-control" id="death_name" required><br>\
+        <label for="bname">Bride Name</label>\
+        <input type="text" name="death_name" class="form-control" id="bname" required><br>\
     </div>\
    <div>\
-            <label for="death_reason">Death Reason</label>\
-            <input type="text" name="death_reason" class="form-control" id="death_reason"><br>\
+            <label for="gname">Groom Name</label>\
+            <input type="text" name="death_reason" class="form-control" id="gname" required><br>\
+    </div>\
+    <div>\
+            <label for="met_details">How they met?</label>\
+            <input type="text" name="death_reason" class="form-control" id="met_details"><br>\
     </div>\
    </br>\
     <button class="btn btn-lg btn-primary" >Submit</button></form>\
     '
     }
-    add_funeral_details=()=>super.generate_event_details() + this.generate_event_details()
+    add_marriage_details=()=>super.generate_event_details() + this.generate_event_details()
     
 
 }
-function eventcreator(){
-    const fun = new funeral()
-    return fun.add_funeral_details()
+function eventcreator(x){
+    if (x==1){
+        const fun = new funeral()
+        return fun.add_funeral_details()
+    }
+    else{
+        const marr = new marriage()
+        return marr.add_marriage_details()
+    }
 }
 function add_event_details(x){
     let event_form
     switch(x){
         // first case will be funeral and next one will be marriage
         case 1:
-        event_form=eventcreator()
+        event_form=eventcreator(1)
         document.querySelector("#eventform").style.display="block"
         document.querySelector("#eventform").innerHTML=event_form
         sessionStorage.setItem("addr_choice",1)
         break;
 
         case 2:
-        event_form=eventcreator()
-        eventform = document.querySelector("#eventform")
-        eventform.style.display="block"
-        eventform.innerHTML=event_form
+        event_form=eventcreator(2)
+        document.querySelector("#eventform").style.display="block"
+        document.querySelector("#eventform").innerHTML=event_form
+        sessionStorage.setItem("addr_choice",1)
         break;
  
         
@@ -152,21 +162,45 @@ const show_events_list=async (url="http://localhost:4444/getEvents")=>{
     let events_arr_response=await axios(url)
     const event_array_str=events_arr_response.data.event_arr
     const events_list_div=document.querySelector("#display_events")
-    
+    let hr_element=document.createElement("hr")
     let final_str
+    let div_element=document.createElement("div")
     for(var i = 0; i < event_array_str.length; i++){ 
-        let para_element = document.createElement("p")
+        let table_element = document.createElement("table")
+        
         
         let props_list=Object.getOwnPropertyNames(event_array_str[i])
         final_str=""
         let temp_str
+        let h3_element=document.createElement("h3")
+        let {event_name}=event_array_str[i]
+        h3_element.innerText=event_name
+        let th_element=document.createElement("th")
+        let td1_element=document.createElement("td")
+        let td2_element=document.createElement("td")
+        td1_element.innerText=""
+        td2_element.appendChild(h3_element)
+        th_element.appendChild(td1_element)
+        th_element.appendChild(td2_element)
+        table_element.appendChild(th_element)
         for (let j=0;j<props_list.length;j++ ){
-            final_str=final_str+`${props_list[j]}:${event_array_str[i][props_list[j]]}</br>`
-            
+           let row_element = document.createElement("tr") 
+           let td1_element=document.createElement("td")
+           let td2_element=document.createElement("td")
+           td1_element.innerText=props_list[j]
+           td2_element.innerText=event_array_str[i][props_list[j]]
+           row_element.appendChild(td1_element)
+           row_element.appendChild(td2_element)
+           table_element.appendChild(row_element)
+           div_element.appendChild(hr_element) 
         }
-        para_element.innerHTML=final_str 
-        events_list_div.appendChild(para_element)
+        div_element.appendChild(table_element)
+            
+
     }
+    events_list_div.appendChild(div_element)
+
+
     
 }
 function select_event(x){
